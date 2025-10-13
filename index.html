@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Listado - Tiendas y Personas</title>
+  <style>
+    :root{
+      --bg: #000000;
+      --red: #ff2b2b;
+      --muted: #b7b7b7;
+      --card: rgba(255,255,255,0.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--red);
+      font-family: Inter, system-ui, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:20px;
+    }
+
+    header{
+      width:100%;
+      max-width:900px;
+      text-align:center;
+      margin-bottom:12px;
+    }
+    h1{
+      margin:10px 0 6px;
+      font-size:22px;
+      letter-spacing:1px;
+      color:var(--red);
+      font-weight:800;
+    }
+    p.lead{color:var(--muted); margin:0 0 14px; font-size:13px}
+
+    .search {
+      width:100%;
+      max-width:900px;
+      display:flex;
+      justify-content:center;
+      margin-bottom:18px;
+    }
+    .search input{
+      width:94%;
+      max-width:860px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:2px solid rgba(255,43,43,0.08);
+      background: rgba(255,255,255,0.01);
+      color:var(--red);
+      outline:none;
+      font-size:15px;
+      caret-color:var(--red);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+
+    .container{
+      width:100%;
+      max-width:900px;
+      display:block;
+    }
+
+    .section-title{
+      color:var(--red);
+      font-weight:900;
+      text-align:center;
+      margin:18px 0 8px;
+      letter-spacing:1px;
+      font-size:20px; /* letras grandes rojas */
+      text-transform: uppercase;
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:8px;
+      margin-bottom:8px;
+    }
+
+    .item{
+      display:block;
+      padding:10px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      color:var(--red);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      font-weight:600;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+      transition: transform .08s ease, background .12s ease;
+      word-break:break-word;
+    }
+    .item:hover{ transform: translateY(-3px); background: rgba(255,43,43,0.03) }
+    .muted { color: var(--muted); font-weight:500; font-size:13px; margin-left:8px; }
+
+    .counts { text-align:center; color:var(--muted); font-size:13px; margin-top:8px; }
+
+    footer { margin-top:18px; color:var(--muted); font-size:13px; text-align:center; }
+
+    @media (max-width:480px){
+      h1{ font-size:20px }
+      .search input{ width:96% }
+      .item{ padding:10px }
+      .section-title{ font-size:18px }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Listado público</h1>
+    <p class="lead">Buscador arriba — escribe cualquier palabra o número para filtrar la lista.</p>
+  </header>
+
+  <div class="search">
+    <input id="filter" type="search" placeholder="Buscar tienda, nombre o número..." aria-label="Buscar lista">
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="section-title">TIENDAS O STORES</div>
+      <div id="stores" class="list">
+        <div class="item">BOOSTED DOTA 2</div>
+        <div class="item">BEARS STORE</div>
+        <div class="item">BOOSTING PALAO</div>
+        <div class="item">CRASH DOTA 2 STORE</div>
+        <div class="item">Coorp Perez</div>
+        <div class="item">DOTA 2 INTERNACIONAL</div>
+        <div class="item">DOTA SCRIPT</div>
+        <div class="item">Dota Store</div>
+        <div class="item">DK STORE</div>
+        <div class="item">Dotawage</div>
+        <div class="item">Dota Eagle Store</div>
+        <div class="item">Dota Bulldog Store</div>
+        <div class="item">Dota Cuy Store</div>
+        <div class="item">EL TIO INVOKER</div>
+        <div class="item">EL PUDGESOR</div>
+        <div class="item">EL TIO JUGGERNAUT</div>
+        <div class="item">FENIX STORE</div>
+        <div class="item">FIREBIRD DOTA2</div>
+        <div class="item">FOXES STORE</div>
+        <div class="item">GAMER PERU</div>
+        <div class="item">GAMERS CLUB</div>
+        <div class="item">HELIOS SPORT</div>
+        <div class="item">JR.DOTA STORE</div>
+        <div class="item">JUEGOS CENTER</div>
+        <div class="item">JAMPER STORE</div>
+        <div class="item">LUNATIC STORE</div>
+        <div class="item">MUNDO VIRTUAL</div>
+        <div class="item">PUCK STORE</div>
+        <div class="item">PEREZ CORP</div>
+        <div class="item">PARASITO (VENDE CUENTAS)</div>
+        <div class="item">PHOENIX STORE (DOTA EAGLE STORE)</div>
+        <div class="item">PANDITA STORE (DOTA INTERNACIONAL)</div>
+        <div class="item">RASH CORP</div>
+        <div class="item">RAPPI BOST</div>
+        <div class="item">ROSHAN STORE</div>
+        <div class="item">SMITH STORE</div>
+        <div class="item">STORE GAMING</div>
+        <div class="item">Store Perú Gaming</div>
+        <div class="item">Strider Boosting</div>
+        <div class="item">STORE EXCLUSIVO</div>
+        <div class="item">TOUCH ARCADE</div>
+        <div class="item">TAURUS STORE</div>
+        <div class="item">UNOW STORE</div>
+        <div class="item">WARNERBOOSTING</div>
+        <div class="item">WOLF STORE</div>
+      </div>
+      <div class="counts" id="countStores"></div>
+    </div>
+
+    <div class="section" style="margin-top:18px;">
+      <div class="section-title">OTROS</div>
+      <div id="others" class="list">
+        <!-- Items "OTROS" -->
+        <div class="item">Alex Ticona Mamani</div>
+        <div class="item">Alex Henry Lopez Velazques</div>
+        <div class="item">Adriel Emilio Sulca Lopez</div>
+        <div class="item">ANDERSON RM HEAVENS</div>
+        <div class="item">ADRIANA DIAZ APONTE (ARON MANSILLA)</div>
+        <div class="item">ANDY FRETEL</div>
+        <div class="item">ANDY FH</div>
+        <div class="item">ANA PEREZ</div>
+        <div class="item">ANDY LLV DE LOS KINGS</div>
+        <div class="item">ABRAHAM NANO</div>
+        <div class="item">ARON ORTEGA LLANQUE</div>
+        <div class="item">AARON DANIEL MANSILLA CONTRERAS</div>
+        <div class="item">AARON RIOS</div>
+        <div class="item">ANTHONY SALVADOR HUAMANI FIERRO</div>
+        <div class="item">ANTHONY RAMOS OFICIAL</div>
+        <div class="item">ALBERT BENJAMIN QUISPE QUISPE</div>
+        <div class="item">ADOLFO GUILLERMO CIEZA</div>
+        <div class="item">ANGEL GABRIEL CONDORI SULLCACCORI</div>
+        <div class="item">AFNET OLIVER PINEDA PUJAY</div>
+        <div class="item">ANGEL MANUEL SAAV</div>
+        <div class="item">ANGEL MANUEL SAAVEDRA RODRIGUEZ</div>
+        <div class="item">ANTONIO CONDORI</div>
+        <div class="item">ANGEL ADOLFO QUISPE ROJAS</div>
+        <div class="item">ANGEL QUISPE MERINO</div>
+        <div class="item">ANGEL REYNOSO</div>
+        <div class="item">ANGEL EDUARDO REYNOSO QUISPE</div>
+        <div class="item">ALINK PLU DB</div>
+        <div class="item">ALEX COOL MID</div>
+        <div class="item">ALVAREZ ZAMORA STIVEN</div>
+        <div class="item">ALVARO D'ILAN R'OJAS</div>
+        <div class="item">ANDERSON SANCHEZ</div>
+        <div class="item">ANGELA ANGUIE (ALDAIR HC)</div>
+        <div class="item">ANDERSON ERIK SANCHEZ SOLANO</div>
+        <div class="item">ANGEL GABRIEL GAMARRA QP</div>
+        <div class="item">ALDAIR HC</div>
+        <div class="item">ALDAHIR JORDAN ÑIQUE ROJAS</div>
+        <div class="item">ANTHONY S-M</div>
+        <div class="item">ABEL BL</div>
+        <div class="item">ALEXANDER MUÑOZ ARTEAGA</div>
+        <div class="item">ARMANDO LOPEZ</div>
+        <div class="item">ANDRES LOPEZ</div>
+        <div class="item">ANDRES MACAVILCA COLQUE</div>
+        <div class="item">BP JHORCH</div>
+        <div class="item">BATRA CRISTIAN</div>
+        <div class="item">BRUCE WEYNEE</div>
+        <div class="item">BLADIMIR ANGEL MAMANI YANA</div>
+        <div class="item">BRYAN A'Q</div>
+        <div class="item">BRAYHAN DANS MAVERICK</div>
+        <div class="item">BRAYAN ANGEL BRAVO SOTO</div>
+        <div class="item">Briam anderson rosales urbano</div>
+        <div class="item">BRISAIDA TORRES ROJAS</div>
+        <div class="item">BENITO ANTONY QUISPE ATAHUALPA</div>
+        <div class="item">CHRIS QUILL</div>
+        <div class="item">Cristian Jonathan Campos Carhuallanqui (tosscuac cc)</div>
+        <div class="item">CARLOS HUMBERTO FLORES HUAMAN</div>
+        <div class="item">CARLOS ALFONSO REQUEJO PALOMINO</div>
+        <div class="item">CARLOS ALFREDO RONDA VALDIVIEZO</div>
+        <div class="item">CARLOS CÑ</div>
+        <div class="item">CARLOS ALBERTO COZ QUITÓ</div>
+        <div class="item">CAROL VILCAPOMA JIMÉNEZ</div>
+        <div class="item">CLEVER ANTHONY CRUZ PAITAN</div>
+        <div class="item">Cristian Jonathan Campos Carhuallanqui</div>
+        <div class="item">CRISTHIAN PAUL SOLIS PEREZ</div>
+        <div class="item">CRISTIAN CHUQUIZUTA</div>
+        <div class="item">DUSTIN KENYER ALCANTARA TARAZONA</div>
+        <div class="item">DUSTIN ALCANTARA</div>
+        <div class="item">CAMUZ SANCHEZ</div>
+        <div class="item">DANY DE CONTRERAS</div>
+        <div class="item">DAMIAN JESUS MACIAS</div>
+        <div class="item">Diego Daniel rojas vilchez</div>
+        <div class="item">Diego Acosta (brandom lg)</div>
+        <div class="item">Dante Rafael zacarias garcia</div>
+        <div class="item">DIXON OVALLE</div>
+        <div class="item">DAVID ORTIZ</div>
+        <div class="item">DANTE RAFAEL ZACARIAS GARCIA (tío marci)</div>
+        <div class="item">DAVID AMORIN</div>
+        <div class="item">DER KEGEL (ALDAIR HC)</div>
+        <div class="item">DOMINGO HUGARTE MAMANI</div>
+        <div class="item">Darem Brando Rupa Carmona</div>
+        <div class="item">ERICK ERQUIÑIGO RIOS</div>
+        <div class="item">ERICK ERQUINIGO RIOS</div>
+        <div class="item">Erick Smith Ccoyllo Palomino</div>
+        <div class="item">ERICK QH</div>
+        <div class="item">ELTIO RIAL</div>
+        <div class="item">ERICK STOREE</div>
+        <div class="item">ERICK TONCONI</div>
+        <div class="item">ESNEIDER MANUEL QUISPE ROJAS (SMITH STORE)</div>
+        <div class="item">ERICK BRANDON TONCONI CHAMBILLA</div>
+        <div class="item">ELVIS VARGAS AREVALO</div>
+        <div class="item">ELMER PERCY PORRAS HUAMANI</div>
+        <div class="item">ESTEBAN SANCHEZ</div>
+        <div class="item">ENRIQUE GUTIERREZ VARGAS</div>
+        <div class="item">EDGAR LUIS MEJIA SALINAS</div>
+        <div class="item">ENRIQUE PALACIOS</div>
+        <div class="item">EDWIN CRISTOBAL REYES MEZA</div>
+        <div class="item">FRANK SUAREZ</div>
+        <div class="item">Frank Jara</div>
+        <div class="item">Fran klin Jhon Joaquin Borja</div>
+        <div class="item">Frank Eduardo Peña Chipana</div>
+        <div class="item">FRANSISCO VALDERRAMA</div>
+        <div class="item">FRANK VILCA RAMIREZ</div>
+        <div class="item">FREDDY MARTIN SABRERA YLLA</div>
+        <div class="item">FERREYRA OMAR (SUPLANTADO NO VENDE NADA)</div>
+        <div class="item">FRANCO GOMEZ</div>
+        <div class="item">FILIPPO BLAS</div>
+        <div class="item">FELIPE FREDDY</div>
+        <div class="item">GABRIEL ROJAS PRADO</div>
+        <div class="item">GABRIEL BALDEON (REEMBOLSOPAYPAL)</div>
+        <div class="item">GIANCARLO MENDOZAC</div>
+        <div class="item">GLENN MH</div>
+        <div class="item">GEAN QUILLATUPA</div>
+        <div class="item">Gerson Flavio Sullon Vite</div>
+        <div class="item">GOES D JESUS</div>
+        <div class="item">GERAL CESAR TORRES RAMOS</div>
+        <div class="item">HENRY GILES TELLO</div>
+        <div class="item">IVAN CASAS SANDOVAL (DIAMANTES FREE FIRE)</div>
+        <div class="item">JHORCH BP</div>
+        <div class="item">Johonathan Loza Coarita</div>
+        <div class="item">Jimmy Elmer Mercedes Ramirez</div>
+        <div class="item">Juan Carlos Camacho Fernandez</div>
+        <div class="item">JAMES COAQUIRA</div>
+        <div class="item">JAVIER CRISTHIAN FIGUEROA ARCE</div>
+        <div class="item">JAIR ANTHONY PORRAS</div>
+        <div class="item">JAIR ANTHONY PORRAS QUISPE</div>
+        <div class="item">JESUS MONAR ROMAN</div>
+        <div class="item">JONATAN GL</div>
+        <div class="item">JHORDY JAMIR CABRERA NONTOL</div>
+        <div class="item">JOB ANTONI MANGUIA PALACIOS</div>
+        <div class="item">JULIO RÍOS MURILLO</div>
+        <div class="item">JULIO RIVERS</div>
+        <div class="item">Jorge Augusto Pando Segura</div>
+        <div class="item">JOSE MAGUIÑA</div>
+        <div class="item">JOSE ANTONIO MAGUIÑA RAMIREZ</div>
+        <div class="item">JOSHUA MOSS</div>
+        <div class="item">JOSHUA BOSTING</div>
+        <div class="item">JOSHUA MOSSTV</div>
+        <div class="item">JOSSEMAR MEDRANO SORAS</div>
+        <div class="item">JASER MEDRANO</div>
+        <div class="item">JHANS FLORES TOVAR</div>
+        <div class="item">JHON ABEL HUALLPA QUISPE</div>
+        <div class="item">JHON HQ</div>
+        <div class="item">JHON ANDERSON MAMANI APAZA</div>
+        <div class="item">JON HQ</div>
+        <div class="item">JORGE LUIS HUANCA MAMANI</div>
+        <div class="item">JORGE MANUEL HERRERA MALDONADO</div>
+        <div class="item">JORGE EDUARDO GONZALES NIETO</div>
+        <div class="item">JEFERSON LANDA SALCEDO</div>
+        <div class="item">JUNIOR JOEL LEON VARGAS</div>
+        <div class="item">JOSE MARTIN VALDIVIA LLANOS</div>
+        <div class="item">JOSE ELIAS LLERENA GUTIERREZ</div>
+        <div class="item">JOSEPH LUIS GARIBAY REYES</div>
+        <div class="item">JUAN BRAYAN ESPINOZA NUÑEZ</div>
+        <div class="item">JOSEPH GARIBAY</div>
+        <div class="item">JOHN T LH</div>
+        <div class="item">JASON SMITH</div>
+        <div class="item">JESUS CACERES</div>
+        <div class="item">Jesús Espinoza Leon</div>
+        <div class="item">Jesús Guido Espinoza Leon</div>
+        <div class="item">Jean Carlos Morel Peña</div>
+        <div class="item">JOEL ENRIQUEZ FERNANDEZ</div>
+        <div class="item">JOSSEMAR MEDRANO SORAS</div>
+        <div class="item">JAMYL LUIS</div>
+        <div class="item">JHONATHAN RIVEROS</div>
+        <div class="item">JUAN JOSE VASQUEZ MOLINA</div>
+        <div class="item">JUAN CARLOS MOSQUIPA ACUNA</div>
+        <div class="item">JUAN EMILIO HURTADO CILCCHE</div>
+        <div class="item">JUAN FERNANDO ZUÑIGA LOPEZ</div>
+        <div class="item">JUAN CESAR FLORES</div>
+        <div class="item">JUAN FERNANDEZ</div>
+        <div class="item">JUAN CARLOS CAMACHO</div>
+        <div class="item">JUNIOR CC (TROVO)</div>
+        <div class="item">JONNY TORRES</div>
+        <div class="item">JOSE JOSE P-C</div>
+        <div class="item">JOSUE STEVEN BERNABE CASTRO</div>
+        <div class="item">JORGE AUGUSTO PANDO SEGURA</div>
+        <div class="item">JHOVER RAMIREZ FUENTES</div>
+        <div class="item">Jordan Chique</div>
+        <div class="item">JAMYL BRANDOM LUIS GOMEZ</div>
+        <div class="item">KARLO ALEJO MANSILLA</div>
+        <div class="item">KEVIN CESAR VILCAPOMA JIMÉNEZ</div>
+        <div class="item">KEVIN AQUINO CABRERA</div>
+        <div class="item">KEVIN JAVIER AQUINO CABRERA</div>
+        <div class="item">KEV ZLATAN VJ</div>
+        <div class="item">KEVIN MARCO CARREÑO ROMERO</div>
+        <div class="item">LORENZO MASNA</div>
+        <div class="item">LUIS JESUS GUERRERO ACOSTA</div>
+        <div class="item">Lenin Jhassel Soto Paredes</div>
+        <div class="item">LUIS ALBERTO ORE TAPIA</div>
+        <div class="item">LUIS ALEJANDRO GUTIERREZ MOLINA</div>
+        <div class="item">LUIS ALIGA CAMPOS</div>
+        <div class="item">LUIS GOMEZ JAMYL BRANDON</div>
+        <div class="item">LUDEYVY RUIZ SILVA</div>
+        <div class="item">LUCIO ROPERTO QUISPE CUTIPA</div>
+        <div class="item">Luisa Maria Flores (gerson sullon)</div>
+        <div class="item">LOSS MRR</div>
+        <div class="item">LONES REYDAVID</div>
+        <div class="item">LUIS MARCK</div>
+        <div class="item">LUIS MARCK ANTHONY</div>
+        <div class="item">LUIS MARCK ANT OREJON BACILIO</div>
+        <div class="item">MARY FERNANDEZ</div>
+        <div class="item">MARTIN URQUIZA SANCHEZ</div>
+        <div class="item">MARTIN PAUL CHAVEZ TAIRO</div>
+        <div class="item">MANUEL JUNIOR CHIRINOS APARICIO</div>
+        <div class="item">MOISES IVAN GUTIERREZ ALARCON</div>
+        <div class="item">Mendez Flores Jesús</div>
+        <div class="item">MARCOS CRUZADO PEREZ</div>
+        <div class="item">MARCOS B!BARBOZA</div>
+        <div class="item">MASSIMO ESPINOZA</div>
+        <div class="item">MANSILLA DANIEL</div>
+        <div class="item">MICAELA ALVARADO</div>
+        <div class="item">Magaly Eliseth Amado Mejia</div>
+        <div class="item">MANUEL HUILLCA</div>
+        <div class="item">MARCELO TORRES</div>
+        <div class="item">MARY ESTEFANY VILCA SOTO (YAPE DE BENITO ANTONY)</div>
+        <div class="item">MIGUEL ÁNGEL LQ</div>
+        <div class="item">MARCK OB</div>
+        <div class="item">MARCK BO</div>
+        <div class="item">MARC SPECTOR</div>
+        <div class="item">MIGUEL LA MELODIA DE LA CALLE MIGUEL ANGEL</div>
+        <div class="item">MACAVILCA COLQUE ANDRES</div>
+        <div class="item">NUÑEZ BRYN</div>
+        <div class="item">OMAR FERREYRA (SUPLANTADO NO VENDE NADA)</div>
+        <div class="item">PIERO ANDRE GOMEZ GONZALEZ</div>
+        <div class="item">Paul Enrique Perez</div>
+        <div class="item">Pablo Cesar Nuñez Blanco</div>
+        <div class="item">PATRICK ALEXIS NAVARRO SILVERA</div>
+        <div class="item">P-C JOSE JOSE</div>
+        <div class="item">ROBERTO ALFRE ALDAVE GARCILAZO</div>
+        <div class="item">Rash FT</div>
+        <div class="item">RUSBEL SEDANO TAIPE</div>
+        <div class="item">RONY MAMANI SILLO</div>
+        <div class="item">RODY TURPO VILCA</div>
+        <div class="item">RONALD JHONNEL RUIZ SILVA</div>
+        <div class="item">RICK DREE</div>
+        <div class="item">ROYER VALDI</div>
+        <div class="item">ROGER ANDRES VALVIVIEZO</div>
+        <div class="item">ROGER ANDRES HUARCAYA VALVIVIEZO</div>
+        <div class="item">RAIDEN LAO</div>
+        <div class="item">ROUSSE KIARA GAMARRA FALCON</div>
+        <div class="item">Rolando Rodrigo Castillo Campos</div>
+        <div class="item">RODRIGO JOEL SOTO MAMANI</div>
+        <div class="item">RONY FABRICIO</div>
+        <div class="item">RICARDO RG GALLEGOS</div>
+        <div class="item">RODRIGO MANUEL MOLLEDA MEDINA (W O S)</div>
+        <div class="item">RICHARD JHERSON QI</div>
+        <div class="item">Raz3k robo esta lista de Exp. ESTAF</div>
+        <div class="item">RENZO ESTEFANO ROCHABRUN DIAZ</div>
+        <div class="item">RENZO MOISES AGUILAR MARIN</div>
+        <div class="item">STIVEN ALVAREZ ZAMORA</div>
+        <div class="item">SHERLEY MARIA HUERTA PRECIADO</div>
+        <div class="item">SHESSIRA GERALDINE TORRES RAMOS</div>
+        <div class="item">SABINA CRISTINA NAHUE MENDOZA (FREE FIRE)</div>
+        <div class="item">TOSSCUAC CC</div>
+        <div class="item">Ulises Andre Zana Buitron</div>
+        <div class="item">VICTOR JULIO RIOS MURILLO</div>
+        <div class="item">VICTOR IMA RUIZ</div>
+        <div class="item">VORG SANGER</div>
+        <div class="item">YERI PLKS</div>
+        <div class="item">YHONI GONZO</div>
+        <div class="item">YEFRI ANDERSON</div>
+        <div class="item">YEISON B!BARBOZA</div>
+        <div class="item">YESLIN MUÑOZ</div>
+        <div class="item">YEISON SEGUNDO SOTO CUBAS</div>
+        <div class="item">YHERALDIN TORRES FER</div>
+        <div class="item">YAN GARCIA</div>
+        <div class="item">THIAGO MEZA CRUZADO</div>
+        <div class="item">TAYTAN CHUCHO</div>
+        <div class="item">TORONTOTOCOS SALAS</div>
+        <div class="item">WALTER OLGER VERÁ MERMA (ES MANUEL URQUIZA)</div>
+        <div class="item">WILBERT SAMUEL REVILLA</div>
+        <div class="item">Wilmer Chayan Ubiluz Cordero</div>
+        <div class="item">WILBERT MODESTO REVILLA CHAVEZ</div>
+        <div class="item">XAVIER RICKY HUACACHI RIVERA</div>
+        <div class="item">Xiomara Mercedes Silva Saldarriaga</div>
+        <div class="item">Rosita linda(Isaías)</div>
+
+        <!-- Números / notas -->
+        <div class="item">950729437 — Tobias <span class="muted">(tel)</span></div>
+        <div class="item">914060711 — Cuenta de dota <span class="muted">(tel)</span></div>
+        <div class="item">905784725 — cuenta de dota <span class="muted">(tel)</span></div>
+        <div class="item">955133784 — Código de aegis <span class="muted">(tel)</span></div>
+        <div class="item">946914308 — 150 soles <span class="muted">(tel)</span></div>
+        <div class="item">925196600 — arcana Lc <span class="muted">(tel)</span></div>
+        <div class="item">981616884 — Luis Suárez <span class="muted">(tel)</span></div>
+        <div class="item">912596060 — cuenta de dota <span class="muted">(tel)</span></div>
+        <div class="item">958999530 — Frank Jara <span class="muted">(tel)</span></div>
+        <div class="item">970501252 — ore tapia <span class="muted">(tel)</span></div>
+        <div class="item">907678072 — Payano <span class="muted">(tel)</span></div>
+      </div>
+      <div class="counts" id="countOthers"></div>
+    </div>
+  </div>
+
+  <footer>Presiona <kbd>Esc</kbd> para limpiar el buscador • Hecho por Fer</footer>
+
+  <script>
+    // contador de items por sección
+    const countStoresEl = document.getElementById('countStores');
+    const countOthersEl = document.getElementById('countOthers');
+    const stores = document.querySelectorAll('#stores .item');
+    const others = document.querySelectorAll('#others .item');
+    countStoresEl.textContent = stores.length + ' elementos';
+    countOthersEl.textContent = others.length + ' elementos';
+
+    // filtro en tiempo real
+    const input = document.getElementById('filter');
+    input.addEventListener('input', function(e){
+      const q = e.target.value.trim().toLowerCase();
+      filterList(document.querySelectorAll('.list .item'), q);
+    });
+
+    function filterList(allItems, q){
+      if(!q){
+        allItems.forEach(it => it.style.display = 'block');
+        updateCounts();
+        return;
+      }
+      allItems.forEach(it => {
+        const text = it.textContent.toLowerCase();
+        if(text.indexOf(q) !== -1){
+          it.style.display = 'block';
+        } else {
+          it.style.display = 'none';
+        }
+      });
+      updateCounts();
+    }
+
+    function updateCounts(){
+      const visibleStores = Array.from(document.querySelectorAll('#stores .item')).filter(i=>i.style.display!=='none').length;
+      const visibleOthers = Array.from(document.querySelectorAll('#others .item')).filter(i=>i.style.display!=='none').length;
+      countStoresEl.textContent = visibleStores + ' elementos';
+      countOthersEl.textContent = visibleOthers + ' elementos';
+    }
+
+    // atajo: limpiar input con ESC
+    window.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') { input.value=''; input.dispatchEvent(new Event('input')); }
+    });
+  </script>
+</body>
+</html>
